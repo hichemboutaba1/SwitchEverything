@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+export const dynamic = "force-static";
 export const alt = "SwitchEverything — Free Universal File Converter";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -19,18 +19,17 @@ export default function OGImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+          fontFamily: "sans-serif",
           position: "relative",
-          overflow: "hidden",
         }}
       >
         {/* Background glow */}
         <div
           style={{
+            display: "flex",
             position: "absolute",
             top: -100,
-            left: "50%",
-            transform: "translateX(-50%)",
+            left: 200,
             width: 800,
             height: 400,
             background: "radial-gradient(ellipse, rgba(108,99,255,0.25) 0%, transparent 70%)",
@@ -38,26 +37,8 @@ export default function OGImage() {
           }}
         />
 
-        {/* Grid dots */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "radial-gradient(circle, rgba(108,99,255,0.08) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-
         {/* Logo badge */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 14,
-            marginBottom: 32,
-          }}
-        >
+        <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 32 }}>
           <div
             style={{
               width: 56,
@@ -70,28 +51,20 @@ export default function OGImage() {
               fontSize: 28,
               fontWeight: 800,
               color: "white",
-              boxShadow: "0 8px 30px rgba(108,99,255,0.5)",
             }}
           >
             S
           </div>
-          <span
-            style={{
-              fontSize: 28,
-              fontWeight: 700,
-              background: "linear-gradient(135deg, #a78bfa, #e879f9)",
-              backgroundClip: "text",
-              color: "transparent",
-            }}
-          >
+          <div style={{ display: "flex", fontSize: 28, fontWeight: 700, color: "#a78bfa" }}>
             SwitchEverything
-          </span>
+          </div>
         </div>
 
         {/* Headline */}
         <div
           style={{
-            fontSize: 64,
+            display: "flex",
+            fontSize: 62,
             fontWeight: 800,
             color: "#e8e8f0",
             textAlign: "center",
@@ -100,21 +73,13 @@ export default function OGImage() {
             maxWidth: 900,
           }}
         >
-          Convert Any File,{" "}
-          <span
-            style={{
-              background: "linear-gradient(135deg, #6c63ff 0%, #a78bfa 50%, #ec4899 100%)",
-              backgroundClip: "text",
-              color: "transparent",
-            }}
-          >
-            Instantly & Free
-          </span>
+          Convert Any File, Instantly &amp; Free
         </div>
 
         {/* Subtitle */}
         <div
           style={{
+            display: "flex",
             fontSize: 24,
             color: "#8888aa",
             textAlign: "center",
@@ -130,9 +95,10 @@ export default function OGImage() {
             <div
               key={fmt}
               style={{
+                display: "flex",
                 padding: "8px 20px",
                 borderRadius: 50,
-                background: "rgba(108,99,255,0.12)",
+                background: "rgba(108,99,255,0.15)",
                 border: "1px solid rgba(108,99,255,0.3)",
                 color: "#a78bfa",
                 fontSize: 18,
