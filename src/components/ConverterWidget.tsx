@@ -40,11 +40,14 @@ const IMAGE_FORMAT_MAP: Record<string, ImageOutputFormat> = {
   "convert-jpg-to-png":  "image/png",
 };
 
+const IS_IMAGE_TOOL = (slug: string) => slug in IMAGE_FORMAT_MAP || slug === "convert-svg-to-png";
+
 export default function ConverterWidget({ slug, fromFormat, toFormat, accept }: ConverterWidgetProps) {
   const [status, setStatus]   = useState<"idle" | "converting" | "done" | "error">("idle");
   const [progress, setProgress] = useState(0);
   const [result, setResult]   = useState<ResultData | null>(null);
   const [errorMsg, setErrorMsg] = useState("");
+  const [quality, setQuality]  = useState(85); // image quality 1-100
 
   const handleFile = useCallback(async (file: File) => {
     setStatus("converting");
@@ -55,7 +58,7 @@ export default function ConverterWidget({ slug, fromFormat, toFormat, accept }: 
       let res: ResultData;
 
       if (slug in IMAGE_FORMAT_MAP) {
-        const r = await convertImage(file, IMAGE_FORMAT_MAP[slug], setProgress);
+        const r = await convertImage(file, IMAGE_FORMAT_MAP[slug], setProgress, quality);
         res = { ...r, preview: r.url };
 
       } else if (slug === "convert-svg-to-png") {
@@ -147,12 +150,56 @@ export default function ConverterWidget({ slug, fromFormat, toFormat, accept }: 
           <p className="mt-2 text-xs" style={{ color: "var(--text-secondary)" }}>{progress}%</p>
         </div>
       ) : (
-        <UploadZone
-          accept={accept}
-          onFile={handleFile}
-          fromFormat={fromFormat}
-          toFormat={toFormat}
-        />
+        <div className="space-y-4">
+          {/* Quality slider — only for image tools */}
+          {IS_IMAGE_TOOL(slug) && slug !== "convert-svg-to-png" && (
+            <div
+              className="rounded-2xl p-4"
+              style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
+            >
+              <div className="flex items-center justify-between mb-3">
+                <label className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+                  Output Quality
+                </label>
+                <div className="flex items-center gap-2">
+                  <span
+                    className="text-xs px-2 py-0.5 rounded-full font-bold"
+                    style={{
+                      background: quality >= 80 ? "rgba(16,185,129,0.12)" : quality >= 60 ? "rgba(245,158,11,0.12)" : "rgba(239,68,68,0.12)",
+                      color: quality >= 80 ? "#10b981" : quality >= 60 ? "#f59e0b" : "#ef4444",
+                    }}
+                  >
+                    {quality >= 85 ? "High" : quality >= 70 ? "Medium" : "Low"}
+                  </span>
+                  <span className="text-sm font-bold w-8 text-right" style={{ color: "var(--accent)" }}>
+                    {quality}
+                  </span>
+                </div>
+              </div>
+              <input
+                type="range"
+                min={10}
+                max={100}
+                step={5}
+                value={quality}
+                onChange={(e) => setQuality(Number(e.target.value))}
+                className="w-full h-2 rounded-full appearance-none cursor-pointer"
+                style={{ accentColor: "var(--accent)" }}
+              />
+              <div className="flex justify-between mt-1">
+                <span className="text-xs" style={{ color: "var(--text-secondary)" }}>Smaller file</span>
+                <span className="text-xs" style={{ color: "var(--text-secondary)" }}>Best quality</span>
+              </div>
+            </div>
+          )}
+
+          <UploadZone
+            accept={accept}
+            onFile={handleFile}
+            fromFormat={fromFormat}
+            toFormat={toFormat}
+          />
+        </div>
       )}
 
       {status === "error" && (

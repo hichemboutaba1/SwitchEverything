@@ -68,6 +68,7 @@ export default function Header() {
             { href: "/#tools", label: "Tools" },
             { href: "/#how-it-works", label: "How It Works" },
             { href: "/#faq", label: "FAQ" },
+            { href: "/blog", label: "Blog" },
           ].map((item) => (
             <Link
               key={item.href}

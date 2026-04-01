@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TOOLS } from "@/lib/utils";
+import { BLOG_POSTS } from "@/lib/blog";
 
 export default function Footer() {
   const imageTools = TOOLS.filter((t) => t.category === "image");
@@ -99,28 +100,28 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Features */}
+          {/* Blog */}
           <div>
-            <h3
-              className="text-xs font-semibold uppercase tracking-wider mb-4"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              Why SwitchEverything
+            <h3 className="text-xs font-semibold uppercase tracking-wider mb-4" style={{ color: "var(--text-secondary)" }}>
+              Blog &amp; Guides
             </h3>
-            <ul className="space-y-3 text-sm" style={{ color: "var(--text-secondary)" }}>
-              {[
-                ["🔒", "Zero upload — 100% client-side"],
-                ["⚡", "Instant conversion, no waiting"],
-                ["🆓", "Completely free, forever"],
-                ["🌍", "Works on any browser"],
-                ["📱", "Mobile-friendly design"],
-                ["🔄", "Batch-ready architecture"],
-              ].map(([icon, text]) => (
-                <li key={text} className="flex items-start gap-2">
-                  <span>{icon}</span>
-                  <span>{text}</span>
+            <ul className="space-y-2">
+              {BLOG_POSTS.map((post) => (
+                <li key={post.slug}>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="text-sm hover:text-white transition-colors line-clamp-1"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {post.coverEmoji} {post.title.split(":")[0].split("—")[0].trim()}
+                  </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/blog" className="text-sm font-medium hover:text-white transition-colors" style={{ color: "#6c63ff" }}>
+                  View all articles →
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

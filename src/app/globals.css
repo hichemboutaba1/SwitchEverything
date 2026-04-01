@@ -291,6 +291,99 @@ body {
   animation: progress-shine 1.5s linear infinite;
 }
 
+/* ── Blog prose styles ─────────────────────────────────────────── */
+.prose-blog h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.prose-blog h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.prose-blog p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+.prose-blog ul, .prose-blog ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.prose-blog li {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin-bottom: 0.35rem;
+  color: var(--text-secondary);
+}
+.prose-blog a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-blog a:hover { color: var(--accent-2); }
+.prose-blog strong { color: var(--text-primary); font-weight: 600; }
+.prose-blog code {
+  font-family: "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: #a78bfa;
+}
+.prose-blog pre {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+.prose-blog pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #e8e8f0;
+}
+.prose-blog blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+.prose-blog table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.prose-blog th {
+  background: var(--surface-2);
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.prose-blog td {
+  padding: 8px 12px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.prose-blog tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
 /* Stagger delays */
 .stagger-1 { animation-delay: 0.05s; }
 .stagger-2 { animation-delay: 0.1s; }

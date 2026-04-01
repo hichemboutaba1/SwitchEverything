@@ -22,13 +22,15 @@ function getOutputFilename(
 export async function convertImage(
   file: File,
   outputFormat: ImageOutputFormat,
-  onProgress?: (p: number) => void
+  onProgress?: (p: number) => void,
+  quality = 85
 ): Promise<ConversionResult> {
   onProgress?.(10);
 
   const options = {
     maxSizeMB: 50,
     fileType: outputFormat,
+    initialQuality: quality / 100,
     useWebWorker: true,
     onProgress: (p: number) => onProgress?.(10 + p * 0.8),
   };
