@@ -34,11 +34,25 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = getBlogPost(slug);
   if (!post) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { "@type": "Organization", name: "SwitchEverything", url: BASE_URL },
+    publisher: { "@type": "Organization", name: "SwitchEverything", url: BASE_URL },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${BASE_URL}/blog/${post.slug}` },
+    url: `${BASE_URL}/blog/${post.slug}`,
+  };
+
   const cat = BLOG_CATEGORIES[post.category];
   const related = BLOG_POSTS.filter((p) => p.slug !== slug && p.category === post.category).slice(0, 3);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="flex flex-col lg:flex-row gap-12">
 
         {/* ── Article ── */}

@@ -353,6 +353,195 @@ const x = 42;
 <p>No upload, no account, no cost. Your content never leaves your device.</p>
     `,
   },
+  {
+    slug: "json-vs-csv",
+    title: "JSON vs CSV: Which Format Should You Use for Your Data?",
+    description: "A practical comparison of JSON and CSV for developers, analysts, and data engineers — when each format excels and how to convert between them free.",
+    date: "2025-04-01",
+    readTime: 5,
+    category: "data",
+    coverEmoji: "📊",
+    content: `
+<h2>The Short Answer</h2>
+<p>Use <strong>CSV</strong> for tabular data you'll open in Excel, Google Sheets, or import into databases. Use <strong>JSON</strong> for APIs, web applications, and data with complex or nested structures. When your audience is mixed, convert between them instantly with our free tools.</p>
+
+<h2>What is CSV?</h2>
+<p>CSV (Comma-Separated Values) is the oldest and most universal data exchange format. Every spreadsheet application, database, and data tool on earth can read CSV. Its structure is brutally simple: headers on the first row, one record per line, values separated by commas.</p>
+<p><strong>Strengths:</strong></p>
+<ul>
+  <li>Opens natively in Excel, Numbers, LibreOffice, Google Sheets</li>
+  <li>Supported by every database (MySQL, PostgreSQL, SQLite, MongoDB)</li>
+  <li>Tiny file size for simple flat data</li>
+  <li>Human-readable in any text editor</li>
+  <li>Standard for data exports from CRMs, analytics tools, payment platforms</li>
+</ul>
+<p><strong>Weaknesses:</strong></p>
+<ul>
+  <li>Cannot represent nested or hierarchical data natively</li>
+  <li>No data type support (everything is a string)</li>
+  <li>No standard for special characters, encoding, or null values</li>
+  <li>Tricky to parse when values contain commas or newlines</li>
+</ul>
+
+<h2>What is JSON?</h2>
+<p>JSON (JavaScript Object Notation) became the de facto standard for web APIs in the 2010s and has not looked back. It supports nested objects, arrays, booleans, numbers, strings, and null values — a rich type system that CSV simply cannot match.</p>
+<p><strong>Strengths:</strong></p>
+<ul>
+  <li>Native to JavaScript and every modern programming language</li>
+  <li>Supports nested and hierarchical structures</li>
+  <li>Preserves data types (numbers, booleans, null)</li>
+  <li>Standard for REST APIs and web services</li>
+  <li>Directly usable in React, Vue, Node.js, Python, etc.</li>
+</ul>
+<p><strong>Weaknesses:</strong></p>
+<ul>
+  <li>Cannot be opened in Excel without conversion</li>
+  <li>Verbose for simple flat data (larger file size than CSV)</li>
+  <li>Less readable for non-technical stakeholders</li>
+  <li>No standard way to represent tabular data with column types</li>
+</ul>
+
+<h2>When to Use Each</h2>
+<table>
+  <thead><tr><th>Use Case</th><th>Best Format</th></tr></thead>
+  <tbody>
+    <tr><td>Excel/Sheets report for stakeholders</td><td>CSV</td></tr>
+    <tr><td>REST API response</td><td>JSON</td></tr>
+    <tr><td>Database import/export</td><td>CSV</td></tr>
+    <tr><td>Configuration file</td><td>JSON</td></tr>
+    <tr><td>Nested or hierarchical data</td><td>JSON</td></tr>
+    <tr><td>Simple flat table</td><td>CSV (smaller)</td></tr>
+    <tr><td>JavaScript/Node.js app data</td><td>JSON</td></tr>
+    <tr><td>Data analysis in Python/R</td><td>CSV (pandas, tidyverse)</td></tr>
+  </tbody>
+</table>
+
+<h2>Convert Between JSON and CSV — Free</h2>
+<ul>
+  <li><a href="/convert-csv-to-json">CSV to JSON Converter</a> — import spreadsheet data into your app</li>
+  <li><a href="/convert-json-to-csv">JSON to CSV Converter</a> — share API data with non-technical users</li>
+</ul>
+<p>Both tools run entirely in your browser — no upload, no account, no cost.</p>
+    `,
+  },
+  {
+    slug: "excel-to-csv-guide",
+    title: "How to Convert Excel to CSV — 3 Free Methods (2025)",
+    description: "Need to convert an Excel file to CSV? Here are 3 free methods — using Excel itself, Google Sheets, or our instant browser-based tool with no software required.",
+    date: "2025-03-25",
+    readTime: 4,
+    category: "data",
+    coverEmoji: "📋",
+    content: `
+<h2>Why Convert Excel to CSV?</h2>
+<p>Excel (.xlsx) files are powerful but heavy. CSV is the universal format that any tool, database, or programming language can read. You need to convert Excel to CSV when:</p>
+<ul>
+  <li>Importing data into a database (MySQL, PostgreSQL, SQLite)</li>
+  <li>Processing data with Python (pandas), R, or Node.js</li>
+  <li>Uploading contacts to a CRM or email marketing tool</li>
+  <li>Sharing data with a system that doesn't support Excel</li>
+  <li>Reducing file size for simple tabular data</li>
+</ul>
+
+<h2>Method 1: Our Free Browser Tool (Fastest)</h2>
+<p>The fastest method with no software required. Use our <a href="/convert-excel-to-csv">Excel to CSV Converter</a>:</p>
+<ol>
+  <li>Go to the converter</li>
+  <li>Drop your .xlsx file</li>
+  <li>Download the CSV instantly</li>
+</ol>
+<p>Your file never leaves your browser — fully private. Works on any OS (Windows, Mac, Linux, ChromeOS). Converts the <strong>first sheet</strong> of the workbook.</p>
+
+<h2>Method 2: Using Microsoft Excel</h2>
+<ol>
+  <li>Open the Excel file</li>
+  <li>Go to <strong>File → Save As</strong> (or Export)</li>
+  <li>Choose <strong>CSV (Comma delimited) (*.csv)</strong> from the format dropdown</li>
+  <li>Click Save</li>
+</ol>
+<p><strong>Note:</strong> Excel will warn you that only the active sheet will be saved. Click OK. Formatting, formulas, and multiple sheets are not preserved in CSV — only raw values.</p>
+
+<h2>Method 3: Using Google Sheets (Free, No Software)</h2>
+<ol>
+  <li>Upload the .xlsx file to Google Drive</li>
+  <li>Open it in Google Sheets (right-click → Open with → Google Sheets)</li>
+  <li>Go to <strong>File → Download → Comma-separated values (.csv)</strong></li>
+</ol>
+<p>This also only exports the currently active sheet. Google Sheets is a good option if you don't have Excel installed — it's completely free.</p>
+
+<h2>What Gets Lost in the Conversion</h2>
+<p>CSV is a plain-text format. When converting from Excel, these are permanently lost:</p>
+<ul>
+  <li>Cell formatting (bold, colors, borders, fonts)</li>
+  <li>Formulas (replaced by calculated values)</li>
+  <li>Multiple sheets (only first sheet is exported)</li>
+  <li>Charts, images, and embedded objects</li>
+  <li>Merged cells</li>
+</ul>
+<p>The raw data values are preserved exactly. For data processing and import purposes, this is all you need.</p>
+
+<h2>Going the Other Way: CSV to Excel</h2>
+<p>Need to turn a CSV back into an Excel file? Use our <a href="/convert-csv-to-excel">CSV to Excel Converter</a> — it creates a proper .xlsx file that opens natively in Excel, Google Sheets, and Numbers.</p>
+    `,
+  },
+  {
+    slug: "svg-vs-png",
+    title: "SVG vs PNG: When to Use Vector Graphics (Complete Guide)",
+    description: "SVG and PNG are both popular image formats, but they work completely differently. This guide explains when to use each and how to convert between them free.",
+    date: "2025-03-20",
+    readTime: 6,
+    category: "images",
+    coverEmoji: "🎨",
+    content: `
+<h2>The Fundamental Difference: Vector vs Raster</h2>
+<p>SVG and PNG are fundamentally different kinds of images:</p>
+<ul>
+  <li><strong>SVG (Scalable Vector Graphics)</strong> describes shapes mathematically. Circles, paths, polygons — all defined by equations. Scale an SVG to any size and it remains perfectly sharp.</li>
+  <li><strong>PNG (Portable Network Graphics)</strong> is a raster format — a grid of pixels. Scaling up a PNG makes it blurry because you're just making the pixels bigger.</li>
+</ul>
+
+<h2>File Size Comparison</h2>
+<p>This is where it gets interesting. For the same logo:</p>
+<ul>
+  <li>A simple logo as SVG: <strong>2–10 KB</strong></li>
+  <li>The same logo as PNG at 200×200px: <strong>15–40 KB</strong></li>
+  <li>The same logo as PNG at 2000×2000px (retina quality): <strong>150–400 KB</strong></li>
+</ul>
+<p>SVG wins dramatically on simple graphics. But for complex illustrations or photographs, SVG files can become enormous (describing millions of shapes), while PNG handles them efficiently.</p>
+
+<h2>When to Use SVG</h2>
+<ul>
+  <li><strong>Logos and brand marks</strong> — must look perfect at every size from favicon to billboard</li>
+  <li><strong>Icons</strong> — SVG icon sets (Heroicons, Feather, etc.) are standard in modern web development</li>
+  <li><strong>Charts and infographics</strong> — created in Figma, Illustrator, or D3.js</li>
+  <li><strong>Animations</strong> — SVGs can be animated with CSS and JavaScript</li>
+  <li><strong>Interactive graphics</strong> — SVG elements can respond to events</li>
+  <li><strong>Any graphic that needs to scale</strong> — maps, diagrams, technical drawings</li>
+</ul>
+
+<h2>When to Use PNG</h2>
+<ul>
+  <li><strong>Screenshots</strong> — pixel-perfect representation of UI</li>
+  <li><strong>Complex illustrations</strong> with many colors and gradients</li>
+  <li><strong>Images with transparency</strong> that aren't simple shapes (drop shadows, complex masks)</li>
+  <li><strong>Profile pictures and avatars</strong> at fixed sizes</li>
+  <li><strong>Compatibility</strong> — when the receiving system doesn't support SVG (some email clients, older CMSs)</li>
+  <li><strong>Rasterized exports</strong> for social media platforms that don't accept SVG</li>
+</ul>
+
+<h2>Browser and Platform Support</h2>
+<p>SVG is supported by all modern browsers and can be embedded directly in HTML or used as an <code>&lt;img&gt;</code> src. However:</p>
+<ul>
+  <li>Most social media platforms (Twitter, Facebook, Instagram) do <strong>not</strong> accept SVG uploads — use PNG</li>
+  <li>Some older email clients do not render SVG in emails — use PNG</li>
+  <li>Some CMS platforms and image hosting services reject SVG for security reasons</li>
+</ul>
+
+<h2>Convert SVG to PNG — Free</h2>
+<p>When you need to share an SVG as a PNG (for social media, email, or compatibility), use our <a href="/convert-svg-to-png">free SVG to PNG Converter</a>. It renders your SVG at its native resolution using the browser's Canvas API and exports a pixel-perfect PNG.</p>
+<p>No upload required — your SVG file never leaves your device.</p>
+    `,
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

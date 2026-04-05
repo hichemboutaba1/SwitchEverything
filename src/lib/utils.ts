@@ -152,6 +152,13 @@ export const TOOLS = [
     from: "HTML", to: "TXT", icon: "📄",
     accept: "text/html,.html,.htm", category: "document",
   },
+  {
+    slug: "compress-image",
+    title: "Image Compressor — Free Online Tool",
+    description: "Compress JPG, PNG, and WebP images online for free. Reduce file size by up to 80% while keeping great visual quality. No upload required.",
+    from: "Image", to: "Compressed", icon: "⚡",
+    accept: "image/jpeg,image/png,image/webp", category: "image",
+  },
 ] as const;
 
 export type ToolSlug = (typeof TOOLS)[number]["slug"];
