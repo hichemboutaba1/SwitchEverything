@@ -4,8 +4,8 @@ import HeroAnimation from "@/components/HeroAnimation";
 import ToolSearchFilter from "@/components/ToolSearchFilter";
 import ConversionHistory from "@/components/ConversionHistory";
 import { BLOG_POSTS } from "@/lib/blog";
+import { TOOLS } from "@/lib/utils";
 import type { Metadata } from "next";
-// TOOLS import removed — now handled inside ToolSearchFilter
 
 export const metadata: Metadata = {
   title: "SwitchEverything — Free Universal File Converter Online",
@@ -69,7 +69,7 @@ const FAQS = [
 ];
 
 const STATS = [
-  { value: "7", label: "Free Tools", color: "#6c63ff" },
+  { value: `${TOOLS.length}`, label: "Free Tools", color: "#6c63ff" },
   { value: "0", label: "Files Uploaded", color: "#10b981" },
   { value: "∞", label: "Conversions", color: "#a78bfa" },
   { value: "100%", label: "Private", color: "#ec4899" },
