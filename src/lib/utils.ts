@@ -194,6 +194,20 @@ export const TOOLS = [
     from: "CSV", to: "Table", icon: "📋",
     accept: ".csv,text/csv", category: "data",
   },
+  {
+    slug: "word-to-pdf",
+    title: "Word to PDF Converter",
+    description: "Convert Word documents (.doc, .docx) to PDF instantly — free, private, and 100% in your browser. No Microsoft Office required.",
+    from: "DOCX", to: "PDF", icon: "📝",
+    accept: ".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document", category: "document",
+  },
+  {
+    slug: "pdf-to-image",
+    title: "PDF to Image Converter",
+    description: "Convert every page of a PDF to PNG or JPG — free, high resolution, multi-page support. 100% private and client-side.",
+    from: "PDF", to: "PNG/JPG", icon: "🖼️",
+    accept: ".pdf,application/pdf", category: "document",
+  },
 ] as const;
 
 export type ToolSlug = (typeof TOOLS)[number]["slug"];
