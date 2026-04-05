@@ -398,3 +398,27 @@ body {
 .stagger-hidden {
   opacity: 0;
 }
+
+/* ─── Scrollbar hide utility ─────────────────────────────────────── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Tool card grid stagger ─────────────────────────────────────── */
+.tool-card-grid > *:nth-child(1) { animation-delay: 0.05s; }
+.tool-card-grid > *:nth-child(2) { animation-delay: 0.10s; }
+.tool-card-grid > *:nth-child(3) { animation-delay: 0.15s; }
+.tool-card-grid > *:nth-child(4) { animation-delay: 0.20s; }
+.tool-card-grid > *:nth-child(5) { animation-delay: 0.25s; }
+.tool-card-grid > *:nth-child(6) { animation-delay: 0.30s; }
+
+/* ─── Category tab active glow ───────────────────────────────────── */
+.cat-tab-active {
+  box-shadow: 0 0 20px rgba(108,99,255,0.2);
+}
+
+/* ─── Improved progress bar ──────────────────────────────────────── */
+.progress-bar-animated {
+  background: linear-gradient(90deg, #6c63ff, #a78bfa, #ec4899);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+}

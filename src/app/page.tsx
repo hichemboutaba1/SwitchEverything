@@ -70,8 +70,8 @@ const FAQS = [
 
 const STATS = [
   { value: `${TOOLS.length}`, label: "Free Tools", color: "#6c63ff" },
-  { value: "0", label: "Files Uploaded", color: "#10b981" },
-  { value: "∞", label: "Conversions", color: "#a78bfa" },
+  { value: "0", label: "Servers Used", color: "#10b981" },
+  { value: "∞", label: "Free Conversions", color: "#a78bfa" },
   { value: "100%", label: "Private", color: "#ec4899" },
 ];
 
@@ -132,7 +132,7 @@ export default function HomePage() {
             }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-violet-400 pulse-dot" />
-            7 free conversion tools — zero upload required
+            {TOOLS.length} free tools — zero upload, zero servers
           </div>
 
           {/* Headline */}
@@ -222,7 +222,7 @@ export default function HomePage() {
                 All Conversion Tools
               </h2>
               <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
-                17 free tools — each runs fully in your browser, no upload needed.
+                {TOOLS.length} free tools — each runs fully in your browser, no upload needed.
               </p>
             </div>
             <ToolSearchFilter />
