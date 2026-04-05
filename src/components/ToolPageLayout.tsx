@@ -17,6 +17,7 @@ const FORMAT_DESC: Record<string, string> = {
   XML:      "XML (eXtensible Markup Language) is a flexible data format used in enterprise systems, RSS feeds, configuration files, and web services. It represents structured data with customizable tags.",
   Markdown: "Markdown is a lightweight markup language for formatting plain text. It uses simple syntax (# for headings, **bold**, etc.) and is widely used in documentation, README files, and blogging platforms.",
   HTML:     "HTML (HyperText Markup Language) is the standard language for building web pages. An HTML file contains the structure and content of a webpage, rendered by web browsers.",
+  Base64:   "Base64 is an encoding scheme that represents binary data as an ASCII string. A Base64 data URI embeds the file content directly inline — no external request needed. It increases file size by ~33% but eliminates HTTP round-trips for small assets.",
 };
 
 /* ── Conversion benefits per tool ── */
@@ -37,10 +38,14 @@ const CONVERSION_BENEFITS: Record<string, string[]> = {
   "convert-excel-to-csv":     ["Import into any database or data tool", "Universal compatibility with all platforms", "Reduce file size and simplify data processing"],
   "convert-markdown-to-html": ["Publish directly on websites and blogs", "Share with non-technical readers in any browser", "Add custom styling with CSS"],
   "convert-html-to-text":     ["Extract readable content from web pages", "Feed text into NLP or analysis pipelines", "Clean input for document processing tools"],
+  "pdf-to-text":              ["Extract text for editing, analysis, or indexing", "No Adobe Acrobat or paid software needed", "Works for text-based PDFs entirely in browser"],
+  "image-to-base64":          ["Embed images directly in HTML/CSS without extra requests", "Required for self-contained HTML files and email templates", "Useful for API payloads and offline web apps"],
 };
 
+type AnyTool = { from: string; to: string; category: string };
+
 /* ── FAQs per category ── */
-function getFaqs(tool: (typeof TOOLS)[number]) {
+function getFaqs(tool: AnyTool) {
   const base = [
     {
       q: `Is this ${tool.from} to ${tool.to} converter really free?`,
@@ -74,10 +79,29 @@ function getFaqs(tool: (typeof TOOLS)[number]) {
   return base;
 }
 
-interface ToolPageLayoutProps { slug: ToolSlug; }
+interface ToolPageLayoutProps {
+  slug: ToolSlug;
+  // Allow override for custom pages (e.g. pdf-to-text, image-to-base64) not in TOOLS
+  title?: string;
+  description?: string;
+  from?: string;
+  to?: string;
+  icon?: string;
+  accept?: string;
+}
 
-export default function ToolPageLayout({ slug }: ToolPageLayoutProps) {
-  const tool = TOOLS.find((t) => t.slug === slug)!;
+export default function ToolPageLayout({ slug, title: titleProp, description: descProp, from: fromProp, to: toProp, icon: iconProp, accept: acceptProp }: ToolPageLayoutProps) {
+  const found = TOOLS.find((t) => t.slug === slug);
+  const tool = found ?? {
+    slug,
+    title: titleProp ?? slug,
+    description: descProp ?? "",
+    from: fromProp ?? "",
+    to: toProp ?? "",
+    icon: iconProp ?? "🔧",
+    accept: acceptProp ?? "",
+    category: "document" as const,
+  };
   const relatedTools = TOOLS.filter((t) => t.slug !== slug && t.category === tool.category).slice(0, 4);
   const otherTools = TOOLS.filter((t) => t.slug !== slug && t.category !== tool.category).slice(0, 4);
   const benefits = CONVERSION_BENEFITS[slug] ?? ["Fast browser-based conversion", "No upload required", "Free and private"];
@@ -85,8 +109,21 @@ export default function ToolPageLayout({ slug }: ToolPageLayoutProps) {
   const fromDesc = FORMAT_DESC[tool.from];
   const toDesc = FORMAT_DESC[tool.to];
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://switcheverything.io/" },
+      { "@type": "ListItem", position: 2, name: tool.title, item: `https://switcheverything.io/${slug}/` },
+    ],
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="flex flex-col lg:flex-row gap-10">
 
         {/* ── Main column ── */}

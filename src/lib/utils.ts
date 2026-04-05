@@ -159,6 +159,41 @@ export const TOOLS = [
     from: "Image", to: "Compressed", icon: "⚡",
     accept: "image/jpeg,image/png,image/webp", category: "image",
   },
+  {
+    slug: "pdf-to-text",
+    title: "PDF to Text Converter",
+    description: "Extract text from any PDF file instantly. Free online PDF to TXT converter — no upload, 100% private, processed in your browser.",
+    from: "PDF", to: "TXT", icon: "📄",
+    accept: ".pdf,application/pdf", category: "document",
+  },
+  {
+    slug: "image-to-base64",
+    title: "Image to Base64 Converter",
+    description: "Convert any image to a Base64 data URI — perfect for embedding in HTML/CSS without external requests. Free and 100% client-side.",
+    from: "Image", to: "Base64", icon: "🔢",
+    accept: "image/jpeg,image/png,image/webp,image/gif,image/svg+xml", category: "image",
+  },
+  {
+    slug: "qr-code-generator",
+    title: "QR Code Generator",
+    description: "Generate QR codes from any URL or text instantly. Free, customizable colors, download as PNG. No signup required.",
+    from: "Text", to: "QR", icon: "📱",
+    accept: "", category: "utility",
+  },
+  {
+    slug: "json-formatter",
+    title: "JSON Formatter & Validator",
+    description: "Beautify, minify, and validate JSON online for free. Instantly formats any JSON with syntax highlighting and error detection.",
+    from: "JSON", to: "JSON", icon: "🧹",
+    accept: "", category: "data",
+  },
+  {
+    slug: "csv-preview",
+    title: "CSV Viewer & Preview",
+    description: "View any CSV file as a table in your browser — no Excel needed. Search, filter, and paginate large files. 100% private.",
+    from: "CSV", to: "Table", icon: "📋",
+    accept: ".csv,text/csv", category: "data",
+  },
 ] as const;
 
 export type ToolSlug = (typeof TOOLS)[number]["slug"];

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import UploadZone from "./UploadZone";
 import ConversionResult from "./ConversionResult";
 import BatchConverterWidget from "./BatchConverterWidget";
+import { useToast } from "./Toast";
 import { convertImage, type ImageOutputFormat } from "@/lib/converters/imageConverter";
 import { convertTextToPdf } from "@/lib/converters/textToPdf";
 import { convertCsvToJson } from "@/lib/converters/csvToJson";
@@ -15,6 +16,8 @@ import { convertHtmlToText } from "@/lib/converters/htmlToText";
 import { convertCsvToExcel } from "@/lib/converters/csvToExcel";
 import { convertExcelToCsv } from "@/lib/converters/excelToCsv";
 import { convertSvgToPng } from "@/lib/converters/svgToPng";
+import { convertPdfToText } from "@/lib/converters/pdfToText";
+import { convertImageToBase64 } from "@/lib/converters/imageToBase64";
 import type { ToolSlug } from "@/lib/utils";
 
 interface ResultData {
@@ -52,6 +55,7 @@ export default function ConverterWidget({ slug, fromFormat, toFormat, accept }: 
   const [quality,  setQuality]  = useState(85);
   const [batchMode, setBatchMode] = useState(false);
   const [originalPreview, setOriginalPreview] = useState<string | undefined>();
+  const { toast } = useToast();
 
   // Ctrl+V clipboard paste
   useEffect(() => {
@@ -62,7 +66,10 @@ export default function ConverterWidget({ slug, fromFormat, toFormat, accept }: 
       for (const item of Array.from(items)) {
         if (item.kind === "file") {
           const file = item.getAsFile();
-          if (file) handleFile(file);
+          if (file) {
+            toast(`Pasted "${file.name}" — converting…`, "info");
+            handleFile(file);
+          }
           break;
         }
       }
@@ -127,15 +134,26 @@ export default function ConverterWidget({ slug, fromFormat, toFormat, accept }: 
         const r = await convertExcelToCsv(file, setProgress);
         res = { ...r, preview: r.preview };
 
+      } else if (slug === "pdf-to-text") {
+        const r = await convertPdfToText(file, setProgress);
+        res = { ...r, preview: r.preview };
+
+      } else if (slug === "image-to-base64") {
+        const r = await convertImageToBase64(file, setProgress);
+        res = { ...r, preview: r.preview };
+
       } else {
         throw new Error("Converter not found for this tool.");
       }
 
       setResult({ ...res, originalPreview });
       setStatus("done");
+      toast(`✅ Converted to ${toFormat} successfully!`, "success");
     } catch (err) {
       setStatus("error");
-      setErrorMsg(err instanceof Error ? err.message : "Conversion failed. Please try again.");
+      const msg = err instanceof Error ? err.message : "Conversion failed. Please try again.";
+      setErrorMsg(msg);
+      toast(msg, "error");
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug, quality, originalPreview]);

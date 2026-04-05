@@ -542,6 +542,234 @@ const x = 42;
 <p>No upload required — your SVG file never leaves your device.</p>
     `,
   },
+  {
+    slug: "pdf-to-text-guide",
+    title: "How to Extract Text from PDF — Free Methods in 2025",
+    description: "Learn how to extract text from any PDF file using free online tools, browser extensions, and command-line utilities. No Adobe Acrobat needed.",
+    date: "2025-04-03",
+    readTime: 6,
+    category: "documents",
+    coverEmoji: "📄",
+    content: `
+<h2>Why Extract Text from a PDF?</h2>
+<p>PDFs are designed for visual presentation — not data extraction. But whether you need to copy content into a Word document, feed text into an AI tool, or index a PDF for search, extracting the text layer is the first step. Here are the best free methods in 2025.</p>
+
+<h2>Method 1: Free Online PDF to Text Converter</h2>
+<p>The fastest option is a browser-based tool like our <a href="/pdf-to-text">free PDF to Text converter</a>. It uses Mozilla's PDF.js library to parse the PDF and extract all text layers — entirely in your browser, with no upload and no account.</p>
+<ol>
+  <li>Go to <a href="/pdf-to-text">SwitchEverything PDF to Text</a></li>
+  <li>Drop your PDF into the upload zone</li>
+  <li>Download the <code>.txt</code> file with all extracted text</li>
+</ol>
+
+<h2>Method 2: Copy-Paste (Simple PDFs)</h2>
+<p>For simple, text-based PDFs (not scanned), you can open the file in any PDF reader (Adobe Acrobat Reader, Preview on macOS, or your browser), select all with <kbd>Ctrl+A</kbd>, and paste into a text editor. This works well for clean PDFs but breaks down with multi-column layouts or scanned images.</p>
+
+<h2>Method 3: Google Docs</h2>
+<p>Upload your PDF to Google Drive, then right-click and choose <strong>Open with Google Docs</strong>. Google will automatically run OCR and extract the text. This works even for scanned PDFs. The formatting may be messy, but the text is there.</p>
+
+<h2>Method 4: Command Line (Linux/macOS)</h2>
+<p>For developers and power users, <code>pdftotext</code> (part of the <code>poppler-utils</code> package) is the gold standard:</p>
+<pre><code>pdftotext document.pdf output.txt</code></pre>
+<p>Install on Ubuntu: <code>sudo apt install poppler-utils</code>. On macOS: <code>brew install poppler</code>.</p>
+
+<h2>What About Scanned PDFs?</h2>
+<p>Scanned PDFs are images of text, not actual text. None of the above methods (except Google Docs) will work without OCR (Optical Character Recognition). For scanned documents, Google Docs OCR or a dedicated OCR tool is your best option.</p>
+
+<h2>Privacy Considerations</h2>
+<p>If your PDF contains sensitive information (contracts, medical records, financial data), avoid uploading to third-party servers. Use our <a href="/pdf-to-text">client-side PDF to Text converter</a> — your file never leaves your browser.</p>
+    `,
+  },
+  {
+    slug: "image-to-base64-guide",
+    title: "Image to Base64: What It Is and When to Use It",
+    description: "Learn what Base64 encoding is, why developers embed images as data URIs, and how to convert any image to Base64 for free in your browser.",
+    date: "2025-04-04",
+    readTime: 5,
+    category: "images",
+    coverEmoji: "🔢",
+    content: `
+<h2>What is Base64?</h2>
+<p>Base64 is an encoding scheme that converts binary data (like an image file) into a string of ASCII characters. The result looks like this: <code>data:image/png;base64,iVBORw0KGgo...</code></p>
+<p>This string can be used anywhere a URL is expected — in HTML <code>&lt;img&gt;</code> tags, CSS <code>background-image</code> properties, JSON payloads, and email attachments.</p>
+
+<h2>When Should You Use Base64 Images?</h2>
+<ul>
+  <li><strong>Small icons and logos</strong> — Embedding tiny images avoids an extra HTTP request, improving load time on first paint.</li>
+  <li><strong>Email HTML templates</strong> — Many email clients block external images by default. Base64-embedded images always display.</li>
+  <li><strong>Single-file HTML exports</strong> — When you need a self-contained HTML file with no external dependencies.</li>
+  <li><strong>API payloads</strong> — Sending images in JSON bodies for REST or GraphQL APIs.</li>
+  <li><strong>CSS backgrounds for tiny patterns</strong> — Inline data URIs for repeating patterns or gradients generated from images.</li>
+</ul>
+
+<h2>When NOT to Use Base64</h2>
+<p>Base64 increases file size by approximately <strong>33%</strong> compared to the original binary. For large images (>10 KB), this overhead eliminates any HTTP-request savings and makes your HTML heavier. For large images, use a CDN and regular URLs instead.</p>
+
+<h2>How to Convert an Image to Base64 — Free</h2>
+<p>Use our <a href="/image-to-base64">free Image to Base64 converter</a>:</p>
+<ol>
+  <li>Drop your JPG, PNG, WebP, GIF, or SVG into the upload zone</li>
+  <li>The converter generates the full <code>data:image/...;base64,...</code> URI</li>
+  <li>Copy the string directly into your HTML, CSS, or JSON</li>
+</ol>
+<p>The entire process runs in your browser — no upload, no server, no privacy risk.</p>
+
+<h2>Using Base64 in HTML</h2>
+<pre><code>&lt;img src="data:image/png;base64,iVBORw0KGgoAAAAN..." alt="Logo" /&gt;</code></pre>
+
+<h2>Using Base64 in CSS</h2>
+<pre><code>.icon {
+  background-image: url('data:image/svg+xml;base64,PHN2Zy...');
+}</code></pre>
+    `,
+  },
+  {
+    slug: "qr-code-guide",
+    title: "QR Codes Explained: How to Create, Use, and Track Them in 2025",
+    description: "Everything you need to know about QR codes — how they work, what they encode, error correction levels, and how to generate them free.",
+    date: "2025-04-05",
+    readTime: 6,
+    category: "guides",
+    coverEmoji: "📱",
+    content: `
+<h2>What is a QR Code?</h2>
+<p>A QR code (Quick Response code) is a two-dimensional barcode that encodes data in a square matrix of black and white pixels. Unlike traditional 1D barcodes (which only store ~20 characters), QR codes can store up to 4,296 alphanumeric characters or 7,089 digits. They are readable by any modern smartphone camera — no app required.</p>
+
+<h2>What Can a QR Code Encode?</h2>
+<ul>
+  <li><strong>URLs</strong> — The most common use. Point users to a website, product page, or landing page.</li>
+  <li><strong>Plain text</strong> — Messages, instructions, or information.</li>
+  <li><strong>Wi-Fi credentials</strong> — Format: <code>WIFI:T:WPA;S:NetworkName;P:Password;;</code></li>
+  <li><strong>vCard / contact details</strong> — Name, phone, email, and address in a scannable format.</li>
+  <li><strong>Email / SMS pre-fill</strong> — Opens a draft email or SMS with a pre-filled recipient and body.</li>
+  <li><strong>App store links</strong> — Direct download links for iOS or Android apps.</li>
+  <li><strong>Crypto wallet addresses</strong> — Ethereum, Bitcoin, and other blockchain addresses.</li>
+</ul>
+
+<h2>Error Correction Levels</h2>
+<p>QR codes have four error correction levels that determine how much of the code can be damaged while still remaining readable:</p>
+<ul>
+  <li><strong>L (Low) — 7% recovery</strong>: Smallest QR codes, best for clean digital use.</li>
+  <li><strong>M (Medium) — 15% recovery</strong>: Good balance for most use cases.</li>
+  <li><strong>Q (Quartile) — 25% recovery</strong>: Recommended for printed materials that may get worn.</li>
+  <li><strong>H (High) — 30% recovery</strong>: Best for logos embedded in the QR code, stickers, and outdoor use.</li>
+</ul>
+<p>Our <a href="/qr-code-generator">QR code generator</a> uses level H by default for maximum durability.</p>
+
+<h2>How to Make Your QR Codes Scannable</h2>
+<ul>
+  <li><strong>Minimum size:</strong> 2 cm × 2 cm for print; 200×200 pixels for digital.</li>
+  <li><strong>Contrast:</strong> Dark modules on a light background. Avoid colored/patterned backgrounds.</li>
+  <li><strong>Quiet zone:</strong> Leave a white border (at least 4 modules wide) around the code.</li>
+  <li><strong>Test before printing:</strong> Always scan your QR code on multiple devices before mass printing.</li>
+</ul>
+
+<h2>Generate a Free QR Code</h2>
+<p>Use our <a href="/qr-code-generator">free QR code generator</a> to create custom QR codes with your choice of colors and sizes. Download as PNG for print or digital use. No signup, no watermarks.</p>
+    `,
+  },
+  {
+    slug: "best-image-formats-2025",
+    title: "Best Image Formats for the Web in 2025: A Complete Guide",
+    description: "JPG, PNG, WebP, AVIF, SVG — which image format should you use in 2025? A practical guide for developers and designers.",
+    date: "2025-04-02",
+    readTime: 7,
+    category: "images",
+    coverEmoji: "🖼️",
+    content: `
+<h2>The Short Answer</h2>
+<ul>
+  <li><strong>Photos:</strong> WebP (first choice), JPG (fallback)</li>
+  <li><strong>Graphics with transparency:</strong> WebP or PNG</li>
+  <li><strong>Icons and logos:</strong> SVG (vector) or WebP</li>
+  <li><strong>Animations:</strong> WebP or MP4</li>
+  <li><strong>Maximum compression:</strong> AVIF (but slower encode)</li>
+</ul>
+
+<h2>JPG — Still the Safe Default</h2>
+<p>JPG (JPEG) has been the web's primary photo format since 1992. Its lossy compression is exceptionally efficient for photographs: a 4 MB RAW photo becomes a 200–400 KB JPG with no perceptible quality loss at standard viewing sizes. JPG is supported by 100% of browsers, email clients, and apps — which is why it remains dominant despite newer alternatives.</p>
+<p><strong>When to use JPG:</strong> Photos, product images, any content going to older systems or email.</p>
+<p><strong>When to avoid JPG:</strong> Text, logos, screenshots (artifacts become visible), images with transparency.</p>
+
+<h2>PNG — Lossless and Transparent</h2>
+<p>PNG uses lossless compression, meaning every pixel is preserved exactly. It supports an alpha (transparency) channel, making it the standard for logos, icons, and UI elements. PNG files are typically 3–10× larger than WebP for the same image, which is its main weakness for web use.</p>
+<p><strong>When to use PNG:</strong> Logos with transparency, screenshots, UI mockups, any image where pixel-perfect accuracy matters.</p>
+
+<h2>WebP — The Modern Standard</h2>
+<p>WebP, developed by Google and now supported by 97%+ of browsers, offers the best balance of quality and file size. It provides 25–34% smaller files than JPG and 26% smaller than PNG at equivalent quality. It supports both lossy and lossless modes and full transparency. In 2025, WebP is the default choice for new web projects.</p>
+<p><strong>Convert your images to WebP:</strong> Use our free <a href="/convert-jpg-to-webp">JPG to WebP</a> or <a href="/convert-png-to-webp">PNG to WebP</a> converters.</p>
+
+<h2>SVG — The Vector Solution</h2>
+<p>SVG (Scalable Vector Graphics) is not a raster format — it stores mathematical descriptions of shapes. SVG files are typically 1–10 KB, scale infinitely without quality loss, can be animated with CSS, and are fully accessible (they're XML). Use SVG for every logo, icon, and illustration that can be drawn as vectors.</p>
+
+<h2>AVIF — The Future (Almost)</h2>
+<p>AVIF (AV1 Image File Format) offers even better compression than WebP — typically 50% smaller than JPG at the same quality. Browser support reached 95%+ in 2024. The catch: encoding is slow (10–100× slower than WebP), making it impractical for server-side resizing. Use AVIF for static hero images and large assets that are pre-encoded.</p>
+
+<h2>Quick Reference Table</h2>
+<table>
+  <tr><th>Format</th><th>Photos</th><th>Transparency</th><th>Animation</th><th>Browser Support</th></tr>
+  <tr><td>JPG</td><td>✅ Best</td><td>❌</td><td>❌</td><td>100%</td></tr>
+  <tr><td>PNG</td><td>⚠️ Large</td><td>✅</td><td>❌</td><td>100%</td></tr>
+  <tr><td>WebP</td><td>✅ Best</td><td>✅</td><td>✅</td><td>97%</td></tr>
+  <tr><td>SVG</td><td>❌</td><td>✅</td><td>✅</td><td>98%</td></tr>
+  <tr><td>AVIF</td><td>✅ Smallest</td><td>✅</td><td>✅</td><td>95%</td></tr>
+</table>
+    `,
+  },
+  {
+    slug: "compress-images-web-performance",
+    title: "How to Compress Images Without Losing Quality — Complete Guide 2025",
+    description: "Image compression is the single biggest performance win for most websites. Learn the best techniques, tools, and settings for 2025.",
+    date: "2025-03-28",
+    readTime: 8,
+    category: "images",
+    coverEmoji: "⚡",
+    content: `
+<h2>Why Image Compression Matters</h2>
+<p>Images account for <strong>50–75% of a typical webpage's total byte weight</strong>. Unoptimized images are the single biggest cause of slow page loads, poor Core Web Vitals scores, and high bounce rates. Google's PageSpeed Insights almost always lists "Serve images in next-gen formats" and "Efficiently encode images" as top recommendations for slow sites.</p>
+
+<h2>Lossy vs. Lossless Compression</h2>
+<p><strong>Lossy compression</strong> permanently removes some image data to achieve dramatic size reductions. For photographs, quality settings of 75–85% are visually indistinguishable from the original at screen resolution while being 60–80% smaller. JPG and WebP lossy are the most common forms.</p>
+<p><strong>Lossless compression</strong> reorganizes data more efficiently without losing any information. Every pixel is preserved exactly. PNG uses lossless compression, as does WebP lossless. Size reductions are more modest (10–30%), but quality is absolutely maintained.</p>
+
+<h2>What "Quality" Settings Mean in Practice</h2>
+<ul>
+  <li><strong>90–100:</strong> Near-lossless. File sizes remain large. Useful only for archival or print.</li>
+  <li><strong>75–85:</strong> The sweet spot for web photography. Visually identical to the original. Recommended for product images and hero photos.</li>
+  <li><strong>60–75:</strong> Noticeably compressed on close inspection but perfectly acceptable for thumbnails, background images, and secondary content.</li>
+  <li><strong>Below 60:</strong> Visible artifacts. Use only for very small thumbnails where quality is secondary to speed.</li>
+</ul>
+
+<h2>Compress Images Free — In Your Browser</h2>
+<p>Use our <a href="/compress-image">free image compressor</a> to reduce JPG, PNG, and WebP files by up to 80% without noticeable quality loss. Adjust the quality slider to balance size and appearance, and use the before/after comparison slider to see the difference.</p>
+
+<h2>Format Conversion for Maximum Savings</h2>
+<p>Sometimes the best "compression" is simply changing the format:</p>
+<ul>
+  <li>Convert JPG to WebP: 25–34% smaller with same quality → <a href="/convert-jpg-to-webp">JPG to WebP</a></li>
+  <li>Convert PNG to WebP: 26% smaller on average → <a href="/convert-png-to-webp">PNG to WebP</a></li>
+</ul>
+
+<h2>Responsive Images for Mobile</h2>
+<p>Serving a 2400px wide image to a mobile screen is the most common image performance mistake. Use the HTML <code>srcset</code> attribute to serve appropriately sized images:</p>
+<pre><code>&lt;img
+  src="image-800w.webp"
+  srcset="image-400w.webp 400w, image-800w.webp 800w, image-1600w.webp 1600w"
+  sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+  alt="Product photo"
+/&gt;</code></pre>
+
+<h2>Quick Wins Checklist</h2>
+<ul>
+  <li>Convert all photos to WebP</li>
+  <li>Set quality to 80 for product images, 75 for thumbnails</li>
+  <li>Use SVG for all logos and icons</li>
+  <li>Add <code>loading="lazy"</code> to all below-the-fold images</li>
+  <li>Specify <code>width</code> and <code>height</code> attributes to prevent layout shifts (CLS)</li>
+  <li>Use a CDN with automatic image optimization (Cloudflare, Cloudinary, ImageKit)</li>
+</ul>
+    `,
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

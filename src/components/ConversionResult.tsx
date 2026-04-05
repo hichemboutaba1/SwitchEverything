@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AdSense from "./AdSense";
 import BeforeAfterSlider from "./BeforeAfterSlider";
+import { useToast } from "./Toast";
 import { formatBytes, getSavingPercent } from "@/lib/utils";
 
 interface ResultData {
@@ -26,6 +27,7 @@ export default function ConversionResult({ result, onReset, toFormat }: Conversi
   const isText  = result.filename.match(/\.(json|csv|txt|html|xml|md)$/i);
   const [copied, setCopied] = useState(false);
   const [shared, setShared] = useState(false);
+  const { toast } = useToast();
 
   const handleCopy = async () => {
     try {
@@ -33,6 +35,7 @@ export default function ConversionResult({ result, onReset, toFormat }: Conversi
       const text = await res.text();
       await navigator.clipboard.writeText(text);
       setCopied(true);
+      toast("Content copied to clipboard!", "success");
       setTimeout(() => setCopied(false), 2000);
     } catch { /* silent */ }
   };
@@ -48,6 +51,7 @@ export default function ConversionResult({ result, onReset, toFormat }: Conversi
     } else {
       await navigator.clipboard.writeText(window.location.href);
       setShared(true);
+      toast("Link copied to clipboard!", "success");
       setTimeout(() => setShared(false), 2000);
     }
   };

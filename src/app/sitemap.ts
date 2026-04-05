@@ -14,6 +14,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1.0,
     },
+    { url: `${BASE_URL}/qr-code-generator`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${BASE_URL}/json-formatter`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${BASE_URL}/csv-preview`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7 },
   ];
 
   const toolRoutes: MetadataRoute.Sitemap = TOOLS.map((tool) => ({
